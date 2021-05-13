@@ -70,6 +70,7 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
-# ignore udon and vrchat sdk files
+# Ignore vrchat sdk files
+/Assets/prefab-id-*
 /Assets/VRCSDK/
 /Assets/VRCSDK.meta
