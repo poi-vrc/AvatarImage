@@ -43,45 +43,64 @@ public class ChocopoiAvatarImageCreator : MonoBehaviour
 
     private bool hookAttempted = false;
     
+    /// <summary>
+    /// 
+    /// </summary>
     void Awake()
     {
+        //Initialize system random
         random = new System.Random();
+
+        //Prepare all UI elements
         avatarImageCanvas = GetComponentInChildren<Canvas>();
         versionText = avatarImageCanvas.transform.Find("VersionText")?.GetComponent<Text>();
         randomText = avatarImageCanvas.transform.Find("RandomText")?.GetComponent<Text>();
         customImage = avatarImageCanvas.transform.Find("CustomImage")?.GetComponent<RawImage>();
         previewCamera = GameObject.Find("AvatarImagePreviewCamera")?.GetComponent<Camera>();
 
+        //Generate random string
         randomText.text = RandomString(randomTextLength);
 
+        //Set the GameObject's active state from the settings
         versionText.gameObject.SetActive(displayVersionText);
         randomText.gameObject.SetActive(displayRandomText);
         customImage.gameObject.SetActive(displayCustomImage);
         customImage.texture = customImageTexture;
     }
     
+    /// <summary>
+    /// Called on every frame update. Starts the VRCCam hook attempt after the scene has loaded for 5 seconds.
+    /// </summary>
     void Update()
     {
-        if (!hookAttempted && Time.timeSinceLevelLoad > 2)
+        //Wait until VRC upload UI fully loaded before hooking
+        if (!hookAttempted && Time.timeSinceLevelLoad > 5)
         {
             hookAttempted = true;
             HookIntoCamera();
         }
     }
 
+    /// <summary>
+    /// Perform hooking our Unity UI overlay into VRCCam
+    /// </summary>
     private void HookIntoCamera()
     {
+        //Find the VRCCam GameObject in the running scene and try hooking it
         GameObject vrcCamObject = GameObject.Find("VRCCam");
         Camera vrcCam = vrcCamObject?.GetComponent<Camera>();
 
+        //Return an error if such camera does not exist in the scene
         if (vrcCamObject == null && vrcCam == null)
         {
             Debug.LogError("[AvatarImage] Could not find VRCCam or it does not contain a camera in the running scene!");
             return;
         }
 
+        //Enables the VRCCam to render all layers (to include our UI layer)
         vrcCam.cullingMask = LayerMask.NameToLayer("Everything");
 
+        //Move VRCCam to our preview camera location if enabled
         if (moveVrcCamToPreviewCameraLocation)
         {
             vrcCam.transform.position = previewCamera.transform.position;
@@ -89,8 +108,13 @@ public class ChocopoiAvatarImageCreator : MonoBehaviour
             vrcCam.transform.localScale = previewCamera.transform.localScale;
         }
 
+        //Assign the canvas's world camera as the VRCCam to render an UI overlay onto the image
         avatarImageCanvas.worldCamera = vrcCam;
 
+        //Requests the (cached) avatar information from VRChat
+        ObtainApiAvatar();
+
+        //First time upload can be checked by looking whether the Image Upload toggle is turned on by default or not.
         bool firstTimeUpload = true;
 
         if (autoTickUploadImageEveryUpload)
@@ -108,11 +132,13 @@ public class ChocopoiAvatarImageCreator : MonoBehaviour
 
                 firstTimeUpload = toggle.isOn;
 
+                //Tick the toggle and invoke connected events
                 toggle.isOn = true;
                 toggle.onValueChanged?.Invoke(true);
             }
         }
 
+        //Auto upload
         if (autoUpload || autoTickAgreement)
         {
             GameObject toggleWarrantObject = GameObject.Find("ToggleWarrant");
@@ -129,6 +155,7 @@ public class ChocopoiAvatarImageCreator : MonoBehaviour
                 toggle.onValueChanged?.Invoke(true);
             }
 
+            //Disallows auto upload if it's a first-time upload (because there are no avatar details inputted)
             if (autoUpload && !firstTimeUpload)
             {
                 GameObject uploadButtonObject = GameObject.Find("UploadButton");
@@ -140,19 +167,24 @@ public class ChocopoiAvatarImageCreator : MonoBehaviour
                 }
                 else
                 {
+                    //Find the button and invoke it
                     Button button = uploadButtonObject.GetComponent<Button>();
                     button.onClick?.Invoke();
                 }
             }
         }
-
-        ObtainApiAvatar();
     }
 
+    /// <summary>
+    /// Obtains the avatar information from the API and assigns it to our version text.
+    /// Code is referenced from the included code within the VRCSDK.
+    /// And it is used to obtain the avatar version for generating the image ONLY.
+    /// </summary>
     private void ObtainApiAvatar()
     {
         PipelineManager pm = avatar.GetComponent<PipelineManager>();
 
+        //Ask the API if there is a copy/cache of the avatar information
         if (pm != null && !string.IsNullOrEmpty(pm.blueprintId) && avatar.apiAvatar == null)
         {
             ApiAvatar av = API.FromCacheOrNew<ApiAvatar>(pm.blueprintId);
@@ -167,15 +199,22 @@ public class ChocopoiAvatarImageCreator : MonoBehaviour
 
         if (avatar.apiAvatar != null)
         {
+            //Assign the avatar version to our version text
             ApiAvatar a = avatar.apiAvatar as ApiAvatar;
             versionText.text = a.version.ToString();
         } else
         {
-            versionText.text = "1";
+            //Sets the version text as zero as this is a new upload
+            versionText.text = "0";
         }
     }
 
-    public string RandomString(int length)
+    /// <summary>
+    /// A misc function to generate a random alphanumeric string with the provided length.
+    /// </summary>
+    /// <param name="length">The length of the random string to be generated</param>
+    /// <returns>A random alphanumeric string with provided length</returns>
+    private string RandomString(int length)
     {
         const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
         return new string(Enumerable.Repeat(chars, length)

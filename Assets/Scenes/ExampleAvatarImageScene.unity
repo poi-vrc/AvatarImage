@@ -608,6 +608,31 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5347966648652262826, guid: 5e2804e9f5a927646adfbba6b0f0300f,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 5347966648652262826, guid: 5e2804e9f5a927646adfbba6b0f0300f,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1080
+      objectReference: {fileID: 0}
+    - target: {fileID: 5347966648652262826, guid: 5e2804e9f5a927646adfbba6b0f0300f,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5347966648652262826, guid: 5e2804e9f5a927646adfbba6b0f0300f,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5347966648652262826, guid: 5e2804e9f5a927646adfbba6b0f0300f,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 8298495325334360549, guid: 5e2804e9f5a927646adfbba6b0f0300f,
         type: 3}
       propertyPath: m_IsActive
@@ -647,7 +672,7 @@ PrefabInstance:
         type: 3}
       propertyPath: customImageTexture
       value: 
-      objectReference: {fileID: 2800000, guid: e0600144a0004694fa13c7b807a33353, type: 3}
+      objectReference: {fileID: 2800000, guid: 79848d6d3e965884fb676642a81c1745, type: 3}
     - target: {fileID: 8721170293325240432, guid: 5e2804e9f5a927646adfbba6b0f0300f,
         type: 3}
       propertyPath: m_RootOrder
