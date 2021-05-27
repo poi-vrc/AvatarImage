@@ -15,6 +15,14 @@ public class AvatarImageEditor : Editor
 
     private string toolVersion = null;
 
+    private bool oldVersionTextEnabled = false;
+
+    private bool oldRandomTextEnabled = false;
+
+    private bool oldCustomImageEnabled = false;
+
+    private Texture oldCustomImageTexture = null;
+
     void Awake()
     {
         string objectName = Application.isPlaying ?
@@ -82,22 +90,31 @@ public class AvatarImageEditor : Editor
         creator.autoTickAgreement = GUILayout.Toggle(creator.autoTickAgreement, "Auto tick the avatar upload agreement");
         creator.autoUpload = GUILayout.Toggle(creator.autoUpload, "Auto upload (without clicking the \"Upload\" button manually)");
 
+        versionText.gameObject.SetActive(creator.displayVersionText);
+        randomText.gameObject.SetActive(creator.displayRandomText);
+        customRawImage.gameObject.SetActive(creator.displayCustomImage);
+        customRawImage.texture = creator.customImageTexture;
+
         // Update the preview image
-        if (customRawImage != null)
+        if (oldCustomImageEnabled != creator.displayCustomImage || 
+            oldVersionTextEnabled != creator.displayVersionText || 
+            oldRandomTextEnabled != creator.displayRandomText ||
+            oldCustomImageTexture != creator.customImageTexture)
         {
-            versionText.gameObject.SetActive(creator.displayVersionText);
-            randomText.gameObject.SetActive(creator.displayRandomText);
-            customRawImage.gameObject.SetActive(creator.displayCustomImage);
-            customRawImage.texture = creator.customImageTexture;
             EditorUtility.SetDirty(target);
         }
 
         GUILayout.Label("Preview", EditorStyles.boldLabel);
-        GUILayout.Box(previewRenderTexture, 
+        GUILayout.Box(previewRenderTexture,
             GUILayout.Height(256), GUILayout.MaxHeight(256));
 
         EditorGUILayout.Separator();
         GUILayout.Label("Tool Version: " + toolVersion);
         EditorGUILayout.SelectableLabel("https://github.com/poi-vrc/AvatarImage");
+
+        oldCustomImageEnabled = creator.displayCustomImage;
+        oldVersionTextEnabled = creator.displayVersionText;
+        oldRandomTextEnabled = creator.displayRandomText;
+        oldCustomImageTexture = creator.customImageTexture;
     }
 }
