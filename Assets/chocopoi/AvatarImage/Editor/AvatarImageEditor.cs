@@ -15,9 +15,9 @@ public class AvatarImageEditor : Editor
 
     private string toolVersion = null;
 
-    private bool oldVersionTextEnabled = false;
+    private bool oldVersionTextEnabled = true;
 
-    private bool oldRandomTextEnabled = false;
+    private bool oldRandomTextEnabled = true;
 
     private bool oldCustomImageEnabled = false;
 
