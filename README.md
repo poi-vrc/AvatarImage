@@ -5,9 +5,9 @@ A simple tool for avatar creators to create a custom image (with random text gen
 
 讓你輕鬆建立自已的角色圖像的小工具，能為你的圖像自動寫上版本號碼和隨機產生的字串用作記認之用。
 
-![example-1](./.github/example-1.PNG)
-![example-2](./.github/example-2.PNG)
-![example-3](./.github/example-3.PNG)
+![example-1](./.github/example-1.png)
+![example-2](./.github/example-2.png)
+![example-3](./.github/example-3.png)
 
 ## Language 語言
 
