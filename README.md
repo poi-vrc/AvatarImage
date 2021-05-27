@@ -6,9 +6,9 @@ A simple tool for avatar creators to create a custom image (with random text gen
 讓你輕鬆建立自已的角色圖像的小工具，能為你的圖像自動寫上版本號碼和隨機產生的字串用作記認之用。
 
 <p align="middle">
-  <img src="./.github/example-1.png" width="100" />
-  <img src="./.github/example-2.png" width="100" /> 
-  <img src="./.github/example-3.png" width="100" />
+  <img src="./.github/example-1.png" width="200" />
+  <img src="./.github/example-2.png" width="200" /> 
+  <img src="./.github/example-3.png" width="200" />
 </p>
 
 ## Language 語言
