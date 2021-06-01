@@ -23,13 +23,13 @@ The tool is currently provided in English only. It will be translated in more la
 
 1. Obtain the Unity package file from the [latest releases](https://github.com/poi-vrc/AvatarImage/releases/latest).
 
-    [最新リリース](https://github.com/poi-vrc/AvatarImage/releases/latest)からUnityパッケージファイルを入手します。
+    [ギットハブ](https://github.com/poi-vrc/AvatarImage/releases/latest)から最新バージョンのUnityパッケージをダンロードしてください
 
     在[GitHub Releases](https://github.com/poi-vrc/AvatarImage/releases/latest)中下載最新版本的Unity package文件。
 
 2. Make sure the latest VRCSDK2/VRCSDK3 is imported into your project.
 
-    最新のVRCSDK2またはVRCSDK3がプロジェクトにインポートされていることを確認します。
+    最新のVRCSDK2またはVRCSDK3がプロジェクトにインポートされていることを確認してください。
 
     請確保最新的VRCSDK2/VRCSDK3已經導入了在你的角色專案中。
 
@@ -47,19 +47,19 @@ The tool is currently provided in English only. It will be translated in more la
 
 5. Import the latest ```AvatarImage-x.x.x.unitypackage``` file into your project.
 
-    最新の```AvatarImage-x.x.x.unitypackage```ファイルをプロジェクトにインポートします。
+    最新の```AvatarImage-x.x.x.unitypackage```ファイルをプロジェクトにインポートしてください。
     
     把最新的```AvatarImage-x.x.x.unitypackage```文件導入到您的角色專案中。
 
 6. Drag the ```AvatarImage``` prefab from the ```Assets/chocopoi/AvatarImage``` folder to your avatar scene.
 
-    ```Assets/chocopoi/AvatarImage```フォルダの中の```AvatarImage.prefab```をアバターのシーンにドラッグします。
+    ```Assets/chocopoi/AvatarImage```フォルダの中の```AvatarImage.prefab```をアバターのシーンにドラッグしてください。
 
     將```Assets/chocopoi/AvatarImage```文件夾中的```AvatarImage.prefab```拖到您的場景中。
 
 7. Use the provided interface to customize your settings:
 
-    付属のインターフェイスを使用して、設定をカスタマイズします。
+    付属のインターフェイスを使用して、設定をカスタマイズしてください。
 
     使用小工具提供的界面更改和個人化角色圖像設定:
 
@@ -91,7 +91,7 @@ AvatarImage利用Unity內置的UI來產生角色圖像，你完全可以在```Av
 
 If you are not using a custom image to use as your avatar image, you can always act the ```AvatarImagePreviewCamera``` as a ```VRCCam``` and move, rotate and scale it to capture the best spot of your avatar. Make sure you have ticked the ```Move VRCCam to the current AvatarImagePreviewCamera location``` checkbox to make this possible.
 
-カスタムイメージを使用していない場合、いつでも```AvatarImagePreviewCamera```を```VRCCam```のように動作させ、移動、回転、拡大縮小して、アバターの最高の場所の写真を撮る。 インターフェイスに　```Move VRCCam to the current AvatarImagePreviewCamera location```チェックボックスがオンになっていることを確認します。
+カスタムイメージを使用していない場合、いつでも```AvatarImagePreviewCamera```を```VRCCam```のように動作させ、移動、回転、拡大縮小して、アバターの最高の場所の写真を撮る。 インターフェイスに　```Move VRCCam to the current AvatarImagePreviewCamera location```チェックボックスがオンになっていることを確認してください。
 
 如果不使用自定義的圖像，隨時可以當```AvatarImagePreviewCamera```是```VRCCam```那樣移動、旋轉、放大縮小。 但請確保在小工具提供的界面中選了```Move VRCCam to the current AvatarImagePreviewCamera location```。
 
