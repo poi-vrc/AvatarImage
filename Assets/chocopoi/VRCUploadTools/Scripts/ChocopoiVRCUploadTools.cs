@@ -6,7 +6,7 @@ using VRC.SDKBase;
 using VRC.Core;
 using System.Linq;
 
-public class ChocopoiAvatarImageCreator : MonoBehaviour
+public class ChocopoiVRCUploadTools : MonoBehaviour
 {
 
     public VRC_AvatarDescriptor avatar;
@@ -56,7 +56,7 @@ public class ChocopoiAvatarImageCreator : MonoBehaviour
         versionText = avatarImageCanvas.transform.Find("VersionText")?.GetComponent<Text>();
         randomText = avatarImageCanvas.transform.Find("RandomText")?.GetComponent<Text>();
         customImage = avatarImageCanvas.transform.Find("CustomImage")?.GetComponent<RawImage>();
-        previewCamera = GameObject.Find("AvatarImagePreviewCamera")?.GetComponent<Camera>();
+        previewCamera = GameObject.Find("VRCUploadToolsPreviewCamera")?.GetComponent<Camera>();
 
         //Generate random string
         randomText.text = RandomString(randomTextLength);

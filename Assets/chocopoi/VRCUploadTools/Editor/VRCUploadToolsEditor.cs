@@ -6,8 +6,8 @@ using UnityEngine.UI;
 using VRC.SDKBase;
 using System.IO;
 
-[CustomEditor(typeof(ChocopoiAvatarImageCreator))]
-public class AvatarImageEditor : Editor
+[CustomEditor(typeof(ChocopoiVRCUploadTools))]
+public class VRCUploadToolsEditor : Editor
 {
     private Texture previewRenderTexture;
 
@@ -27,7 +27,7 @@ public class AvatarImageEditor : Editor
     {
         string objectName = Application.isPlaying ?
             "VRCCam" :
-            "AvatarImagePreviewCamera";
+            "VRCUploadToolsPreviewCamera";
 
         GameObject previewCameraObject = GameObject.Find(objectName);
 
@@ -48,7 +48,7 @@ public class AvatarImageEditor : Editor
 
     private string GetToolVersionFromFile()
     {
-        StreamReader reader = new StreamReader("Assets/chocopoi/AvatarImage/version.txt");
+        StreamReader reader = new StreamReader("Assets/chocopoi/VRCUploadTools/version.txt");
         string str = reader.ReadToEnd();
         reader.Close();
         return str;
@@ -56,19 +56,19 @@ public class AvatarImageEditor : Editor
 
     public override void OnInspectorGUI()
     {
-        ChocopoiAvatarImageCreator creator = (ChocopoiAvatarImageCreator)target;
+        ChocopoiVRCUploadTools creator = (ChocopoiVRCUploadTools)target;
 
         EditorGUILayout.HelpBox("This avatar image editor script helps you to generate an new image with a version code and timestamp every time you upload your avatar.", MessageType.Info);
 
         // Obtain the scene objects
-        Transform avatarImageCanvas = creator.transform.Find("AvatarImageCanvas");
+        Transform avatarImageCanvas = creator.transform.Find("VRCUploadToolsCanvas");
         RawImage customRawImage = avatarImageCanvas?.transform.Find("CustomImage")?.GetComponent<RawImage>();
         Text versionText = avatarImageCanvas?.transform.Find("VersionText").GetComponent<Text>();
         Text randomText = avatarImageCanvas?.transform.Find("RandomText").GetComponent<Text>();
 
         if (avatarImageCanvas == null || customRawImage == null || versionText == null || randomText == null)
         {
-            EditorGUILayout.HelpBox("Error: AvatarImageCanvas/CustomImage/VersionText/RandomText could not be found in the scenes. Do not change their GameObject names or delete them. You will experience run-time errors when you are trying to upload.", MessageType.Error);
+            EditorGUILayout.HelpBox("Error: VRCUploadToolsCanvas/CustomImage/VersionText/RandomText could not be found in the scenes. Do not change their GameObject names or delete them. You will experience run-time errors when you are trying to upload.", MessageType.Error);
         }
 
         GUILayout.Label("Select the avatar that you are going to generate the image for:", EditorStyles.boldLabel);
