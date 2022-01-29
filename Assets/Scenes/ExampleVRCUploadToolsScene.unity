@@ -252,7 +252,7 @@ MonoBehaviour:
   blueprintId: avtr_7e7505f6-4d75-455e-9d7b-a1b270eb97c5
   contentType: 0
   assetBundleUnityVersion: 
-  fallbackStatus: 0
+  fallbackStatus: 2
 --- !u!114 &354703316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -595,15 +595,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   avatar: {fileID: 354703316}
-  displayVersionText: 1
-  displayRandomText: 1
-  displayCustomImage: 1
   moveVrcCamToPreviewCameraLocation: 1
   autoTickUploadImageEveryUpload: 1
   autoTickAgreement: 1
-  autoUpload: 0
+  autoUpload: 1
   randomTextLength: 8
-  customImageTexture: {fileID: 2800000, guid: 79848d6d3e965884fb676642a81c1745, type: 3}
 --- !u!4 &601831376
 Transform:
   m_ObjectHideFlags: 0
@@ -974,7 +970,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 79848d6d3e965884fb676642a81c1745, type: 3}
+  m_Texture: {fileID: 0}
   m_UVRect:
     serializedVersion: 2
     x: 0

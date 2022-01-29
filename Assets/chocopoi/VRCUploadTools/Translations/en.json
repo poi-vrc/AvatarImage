@@ -1,0 +1,11 @@
+{
+    "info": {
+        
+    },
+    "keys": {
+        "label_header_tool_description": "VRCUploadTools allow you to create your own image for your avatar, automatically upload after build complete, and generate avatar clones with different scales automatically. For detailed documentation, please visit the GitHub website.",
+        "button_header_upload_now": "Upload Now",
+        
+        "label_footer_version": "Tool Version: {0}"
+    }
+}

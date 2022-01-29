@@ -1,9 +1,5 @@
-# AvatarImage アバターイメージツール
-A simple tool for avatar creators to create a custom image (with random text generator and version marking) for their avatar without any extra works.
-
-アバター作成者がカスタム画像を作成するためのツールです。 画像のバージョン番号とランダムに生成された文字列を自動的に書き込むことができます。
-
-讓你輕鬆建立自已的角色圖像的小工具，能為你的圖像自動寫上版本號碼和隨機產生的字串用作記認之用。
+# VRCUploadTools
+VRCUploadTools allow you to create your own image for your avatar, automatically upload after build complete, and generate avatar clones with different scales automatically.
 
 <p align="middle">
   <img src="./.github/example-1.png" width="200" />
